@@ -7,4 +7,6 @@ for _ in range(N):
 count = 0
 DP = [0] * 9
 for i in range(N):
-    DP[i] =
+    if count == 2:
+
+    DP[i] = max()
