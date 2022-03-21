@@ -13,3 +13,6 @@ while True:
 
 
     print("w(",a,", ",b,", ",c,") = ",result,sep='')
+
+def as():
+    return 0
