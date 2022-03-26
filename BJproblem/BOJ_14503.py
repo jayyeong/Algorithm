@@ -5,5 +5,5 @@ box = []
 for _ in range(N):
     box.append([int(x) for x in input().split()])
 
-#print(box)
+print(box)
 
