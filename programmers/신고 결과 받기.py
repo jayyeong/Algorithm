@@ -13,6 +13,8 @@ def solution(id_list, report, k):
         if len(r_num[i]) >= k:
             rp.append(id_list[i])
 
+    #a
     answer = []
     return answer
+
 
