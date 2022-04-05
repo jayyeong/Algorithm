@@ -13,7 +13,7 @@ def solution(id_list, report, k):
         if len(r_num[i]) >= k:
             rp.append(id_list[i])
 
-    #aaaasssdsdaa
+    #aaaasssdsdaas
     answer = []
     return answer
 
