@@ -6,15 +6,18 @@ def solution(id_list, report, k):
         y = x.split()
         if not x in r_num[id_list.index(y[1])]:
             r_num[id_list.index(y[1])].append(x)
-    print(r_num)
+    # print(r_num)
     # k넘긴사람 저장
     rp = []
     for i in range(len(id_list)):
         if len(r_num[i]) >= k:
             rp.append(id_list[i])
+    # print(rp)
 
-    #aaaasssdsdaaassasaaa
-    answer = []
+    answer = [0 for _ in range(len(id_list))]
+    for x in report:
+        y = x.split()
+        if y[1] in rp:
+            answer[id_list.index(y[0])] += 1
+    # print(answer)
     return answer
-
-
