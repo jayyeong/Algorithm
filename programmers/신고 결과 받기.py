@@ -12,7 +12,7 @@ def solution(id_list, report, k):
     for i in range(len(id_list)):
         if len(r_num[i]) >= k:
             rp.append(id_list[i])
-    #print(rp) ss
+    #print(rp) sszz
 
     reset = set(report)
     #print(reset)
