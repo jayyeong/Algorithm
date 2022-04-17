@@ -8,7 +8,7 @@ def main():
 
     for _ in range(N):
         S = sys.stdin.readline().split()
-        #print(S)
+
         if S[0] == "push_front":
             deq.appendleft(S[1])
         elif S[0] == "push_back":
