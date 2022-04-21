@@ -15,9 +15,7 @@ for a in q:
         print(a,end='')
     else:
         print(a,',',' ',sep='',end='')
-
 print(">",end='')
 '''
 
 print("<%s>" %(', '.join(q)))
-
