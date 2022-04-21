@@ -5,7 +5,7 @@ for _ in T:
     arr = [int(x) for x in input().split()]
     count = 0
     while max(arr) != arr[0]:
-        #qq
+        #qqaaaa
 
 
 
