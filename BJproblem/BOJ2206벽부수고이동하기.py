@@ -14,6 +14,8 @@ def dfs(x,y,count):
     if x == N - 1 and y == M - 1:
         return count
 
+    road[x][y] = 1
+    
     if x < N - 1 and road[x + 1][y] == 0:
         dfs(x + 1,y,count + 1)
     elif x > 1 and road[x - 1][y] == 0:
