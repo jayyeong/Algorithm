@@ -1,6 +1,6 @@
 N, K = map(int,input().split())
 arr = [x for x in range(1, N + 1)]
-#print(arr)
+#print(tree)
 i = 0
 q = []
 

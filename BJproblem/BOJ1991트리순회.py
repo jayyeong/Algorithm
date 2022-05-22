@@ -42,7 +42,7 @@ if __name__ == "__main__":
         arr.append(Node(chr(65 + i)))
 
     tree = Tree()
-    #tree.root = arr[0]
+    #tree.root = tree[0]
     for i in range(N):
         L = input().split()
         if L[1] != '.':

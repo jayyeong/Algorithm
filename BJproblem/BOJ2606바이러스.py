@@ -13,7 +13,7 @@ arr = []
 visited = []
 for _ in range(PairNum):
     arr.append([int(x) for x in input().split()])
-#print(arr)
+#print(tree)
 graph = [[] for i in range(ComNum + 1)]
 #print(graph)
 for i in range(ComNum + 1):

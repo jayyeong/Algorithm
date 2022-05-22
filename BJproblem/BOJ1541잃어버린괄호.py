@@ -9,7 +9,7 @@ for q in a:
     for b in list(map(int,bb)):
         n += b
     arr.append(n)
-#print(arr)
+#print(tree)
 result = arr[0]
 for i in range(1,len(arr)):
     result -= arr[i]
