@@ -12,8 +12,8 @@ for _ in range(R):
 box = []
 box.append(maze[0][0])
 ss = []
-def dfs(x,y,arr: list):
 
+def dfs(x,y,arr: list):
 
     if x < 0 or x >= R or y < 0 or y >= C:
         return False
