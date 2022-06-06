@@ -22,6 +22,6 @@ def dfs(n):
             box[i] = n
             dfs(i)
 dfs(1)
-#print(box)
+#print(minnum)
 for i in range(2,len(box)):
     print(box[i])
