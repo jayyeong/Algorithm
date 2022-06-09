@@ -1,7 +1,7 @@
 N, M = map(int,input().split())
 trees = [int(x) for x in input().split()]
 
-start, end = 1, max(trees)
+start, end = 0, max(trees)
 
 while start <= end:
     mid = (start + end) // 2
