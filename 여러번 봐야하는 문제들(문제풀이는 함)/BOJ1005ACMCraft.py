@@ -26,21 +26,22 @@ for _ in range(T):
     for i in range(1,N + 1):
         if in_degree[i] == 0:
             deq.append(i)
+            Dtime[i] = D[i] #
 
     while deq:
         node = deq.popleft()
         toposort.append(node)
         for s in adj_list_out[node]:
             in_degree[s] -= 1
+            Dtime[s] = max(Dtime[s],Dtime[node] + D[s]) #
             if in_degree[s] == 0:
                 deq.append(s)
 
-    for i in toposort:
-        count = D[i]
-        al = 0
-        for b in adj_list_in[i]:
-            if al < Dtime[b]:
-                al = Dtime[b]
-        Dtime[i] = count + al
+    # for i in toposort:
+    #     count = 0
+    #     for b in adj_list_in[i]:
+    #         if count < Dtime[b]:
+    #             count = Dtime[b]
+    #     Dtime[i] = D[i] + count
 
     print(Dtime[W])
