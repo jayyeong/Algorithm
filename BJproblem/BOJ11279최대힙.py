@@ -12,3 +12,4 @@ for _ in range(N):
             print(heapq.heappop(box)[1])
     elif x > 0:
         heapq.heappush(box,(-x,x))
+    
