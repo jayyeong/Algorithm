@@ -19,10 +19,10 @@ for k in range(1, N + 1):
             graph[i][j] = min(graph[i][j],graph[i][k] + graph[k][j])
 
 bacon = INF
-r = 0
+answer = 0
 for i in range(N, 0, -1):
     s = sum(graph[i][1:])
     if bacon >= s:
         bacon = s
-        r = i
-print(r)
+        answer = i
+print(answer)
