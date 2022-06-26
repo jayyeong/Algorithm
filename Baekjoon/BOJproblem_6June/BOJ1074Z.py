@@ -6,7 +6,7 @@ size = 2**N
 
 def dfs(row, col, n, value):
     n = n // 2
-    # print(row,col,n,value)
+
     if row < n and col < n:
         if n == 1:
             print(value)
