@@ -14,4 +14,5 @@ while cursor < (M - 1):
     else:
         cursor += 1
         count = 0
+
 print(result)
