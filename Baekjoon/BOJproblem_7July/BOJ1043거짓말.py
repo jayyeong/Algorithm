@@ -5,9 +5,9 @@ from itertools import combinations
 N, M = map(int,input().split())
 ans = 0
 truth_flag = False
-
 party_list = []
 who_know_truth = [False] * (N + 1)
+
 know = [int(x) for x in sys.stdin.readline().rstrip().split()]
 know_member = know[1:]
 
@@ -26,7 +26,6 @@ for _ in range(M):
         if not pair[0] in graph[pair[1]]:
             graph[pair[1]].append(pair[0])
 
-# print(graph)
 def bfs(n):
 
     deq = deque()
@@ -45,8 +44,6 @@ def bfs(n):
 for i in know_member:
     visited = [False] * (N + 1)
     bfs(i)
-
-# print(who_know_truth)
 
 ans = M
 for party in party_list:
