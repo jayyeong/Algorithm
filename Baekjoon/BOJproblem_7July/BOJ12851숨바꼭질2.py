@@ -1,11 +1,10 @@
 from collections import deque
 N, K = map(int,input().split())
 visited = [0] * 200001
-ans_count = 100001
-way = 0
 
 def bfs(n):
-    global way, ans_count
+    ans_count = 100001
+    ans_way = 0
 
     deq = deque()
     deq.append([n, 0])
@@ -22,7 +21,7 @@ def bfs(n):
                 ans_count = count
 
             if count == ans_count:
-                way += 1
+                ans_way += 1
 
         arr = [x - 1, x + 1, x * 2]
 
@@ -31,6 +30,7 @@ def bfs(n):
                 visited[a] = count + 1
                 deq.append([a,count + 1])
 
-bfs(N)
-print(ans_count)
-print(way)
+    return ans_count, ans_way
+
+for ans in bfs(N):
+    print(ans)
