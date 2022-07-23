@@ -23,6 +23,7 @@ def left(board):
                 else: # 비어있지도 않고 다른 값일때
                     cursor += 1 # pass
                     board[i][cursor] = tmp # 바로 옆에 붙임
+
     return board
 
 def right(board):
