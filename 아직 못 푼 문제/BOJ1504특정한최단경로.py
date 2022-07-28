@@ -13,8 +13,6 @@ for _ in range(E):
 
 v1, v2 = map(int,input().split())
 
-#print(graph)
-
 def dijkstra(start):
     que = []
     heapq.heappush(que, (0, start))
@@ -31,21 +29,20 @@ def dijkstra(start):
                 D[i[0]] = cost
                 heapq.heappush(que, (cost,i[0]))
 
-
 root_A, root_B = 0, 0
-D = [INF] * (N + 1)
-dijkstra(1)
 
+D = [INF] * (N + 1)
+dijkstra(1) # 1 -> v1, 1 -> v2
 root_A += D[v1]
 root_B += D[v2]
 
 D = [INF] * (N + 1)
-dijkstra(v1)
+dijkstra(v1) # v1 -> v2, v1 -> N
 root_A += D[v2]
 root_B += D[N]
 
 D = [INF] * (N + 1)
-dijkstra(v2)
+dijkstra(v2) # v2 -> N, v2 -> v1
 root_A += D[N]
 root_B += D[v1]
 
