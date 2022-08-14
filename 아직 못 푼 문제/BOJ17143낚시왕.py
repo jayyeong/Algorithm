@@ -5,74 +5,60 @@ dy = [0, 0, 1, -1]
 
 shark_list = []
 ans = 0
+fishing_zone = [[[] for _ in range(C)] for _ in range(R)]
 
 for i in range(M):
-    shark_list.append([int(x) for x in sys.stdin.readline().rstrip().split()] + [1])
-    shark_list[i][3] -= 1
-    # 위치 (row, col), 속력, 방향, 크기, 생존 유무 1 = 생, 0 = 죽
-    # 1 위, 2 아래, 3 오른쪽, 4 왼쪽
+    r, c, s, d, z = map(int, sys.stdin.readline().rstrip().split())
+    fishing_zone[r - 1][c - 1].append([s, d - 1, z])
+    # d 0 위, 1 아래, 2 우, 3 좌
 
-def shark_moving(shark):
-    r, c, s, d, z, live = shark
+def shark_moving():
+    temp = [[[] for _ in range(C)] for _ in range(R)]
+    for i in range(R):
+        for j in range(C):
+            if fishing_zone[i][j]:
+                x, y = i, j
+                s, d, z = fishing_zone[i][j][0]
+                temp_s = s
 
-    while s > 0:
-        nx, ny = r + dx[d], c + dy[d]
+                while temp_s > 0:
+                    nx, ny = x + dx[d], y + dy[d]
 
-        if 1 <= nx <= R and 1 <= ny <= C:
-            r, c = nx, ny
-            s -= 1
+                    if 0 <= nx < R and 0 <= ny < C:
+                        x, y = nx, ny
+                        temp_s -= 1
 
-        else:
-            if d == 0:
-                d = 1
-            elif d == 1:
-                d = 0
-            elif d == 2:
-                d = 3
-            elif d == 3:
-                d = 2
-            continue
+                    else:
+                        if d == 0:
+                            d = 1
+                        elif d == 1:
+                            d = 0
+                        elif d == 2:
+                            d = 3
+                        elif d == 3:
+                            d = 2
+                        continue
 
-    return (r, c, d)
+                temp[x][y].append([s, d, z])
 
-for step in range(1, C + 1): # 낚시왕이 오른쪽으로 한칸 이동
+    for i in range(R):
+        for j in range(C):
+            fishing_zone[i][j] = temp[i][j]
 
-    nearest_shark = int(1e9)
-
-    for s in shark_list:
-        if s[1] == step and s[5] == 1:
-            if nearest_shark > s[0]:
-                nearest_shark = s[0]
-
-    for i in range(len(shark_list)): # 상어 잡기
-        if shark_list[i][0] == nearest_shark and shark_list[i][5] == 1:
-            ans += shark_list[i][4]
-            del shark_list[i]
+for i in range(C): # 낚시왕이 오른쪽으로 한칸 이동
+    for j in range(R):
+        if fishing_zone[j][i]:
+            ans += fishing_zone[j][i][0][2]
+            fishing_zone[j][i].remove(fishing_zone[j][i][0])
             break
 
-    #print(ans)
+    shark_moving()
 
-    for i in range(len(shark_list)):
-        if shark_list[i][5] == 1:
-            x, y, direc = shark_moving(shark_list[i])
-            shark_list[i][0] = x
-            shark_list[i][1] = y
-            shark_list[i][3] = direc
+    for p in range(R):
+        for q in range(C):
+            if len(fishing_zone[p][q]) > 1:
+                fishing_zone[p][q].sort(key= lambda x: x[2], reverse=True)
+                while len(fishing_zone[p][q]) > 1:
+                    fishing_zone[p][q].pop()
 
-    print(shark_list)
-
-    fishing_zone = [[[] for _ in range(C + 1)] for _ in range(R + 1)]
-
-    #print(fishing_zone)
-    for s in shark_list:
-        if s[5] == 1:
-            fishing_zone[s[0]][s[1]].append(s)
-
-    for i in range(1, R + 1):
-        for j in range(1, C + 1):
-            if len(fishing_zone[i][j]) > 1:
-                fishing_zone[i][j].sort(key= lambda x: x[4], reverse=True)
-                for k in range(len(fishing_zone[i][j]) - 1):
-                    fishing_zone[i][j][k][5] = 0
-
-    print(ans)
+print(ans)
