@@ -15,3 +15,5 @@ for _ in range(TC):
 
     print(roads)
     print(wormholes)
+
+    #ㅅㄷ
