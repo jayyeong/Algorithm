@@ -7,23 +7,23 @@ matrix = []
 for _ in range(N):
     matrix.append([int(x) for x in sys.stdin.readline().split()])
 
-def power_matrix(mat, n):
+def power_matrix(mat, r):
 
-    if n == 1:
-        for i in range(n):
-            for j in range(n):
+    if r == 1:
+        for i in range(N):
+            for j in range(N):
                 mat[i][j] %= 1000
         return mat
 
-    tmp = power_matrix(mat, n//2)
+    tmp = power_matrix(mat, r//2)
 
-    if n % 2 == 1:
-        return mul(mul(tmp, tmp, n), mat, n)
+    if r % 2 == 1:
+        return mul(mul(tmp, tmp, N), mat, N)
     else:
-        return mul(tmp, tmp, n)
+        return mul(tmp, tmp, N)
 
 def mul(A, B, n):
-    print(A, B)
+
     Z = [[0] * n for _ in range(n)]
 
     for row in range(n):
@@ -35,4 +35,7 @@ def mul(A, B, n):
 
     return Z
 
-print(power_matrix(matrix, R))
+ans = power_matrix(matrix, R)
+
+for a in ans:
+    print(' '.join(map(str, a)))
