@@ -33,7 +33,9 @@ def running():
     pass
 
 def aggregate():
-    pass
+    for i in range(R):
+        for j in range(C):
+            graph[i][j]
 
 for _ in range(T):
     graph = Spread()
