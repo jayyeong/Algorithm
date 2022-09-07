@@ -11,7 +11,7 @@ for i in range(R):
     if graph[i][0] == -1:
         air_filter.append([i,0])
 
-print(air_filter)
+#print(air_filter)
 
 def Spread():
     temp = [[0] * C for _ in range(R)]
@@ -30,15 +30,50 @@ def Spread():
     return temp
 
 def running():
-    pass
+    ax, ay = air_filter[0]
+
+    for i in range(ax - 1, -1, -1):
+        graph[i + 1][0] = graph[i][0]
+
+    for i in range(0, C - 1):
+        graph[0][i] = graph[0][i + 1]
+
+    for i in range(0, ax):
+        graph[i][C - 1] = graph[i + 1][C - 1]
+
+    for i in range(C - 2, 0, -1):
+        graph[ax][i + 1] = graph[ax][i]
+
+    graph[ax][0] = 0
+    graph[ax][1] = 0
+
+    ax2, ay2 = air_filter[1]
+
+    for i in range(ax2, R - 1):
+        graph[i][0] = graph[i + 1][0]
+
+    for i in range(0, C - 1):
+        graph[R - 1][i] = graph[R - 1][i + 1]
+
+    for i in range(R - 2, ax2 - 1, - 1):
+        graph[i + 1][C - 1] = graph[i][C - 1]
+
+    for i in range(C - 2, 0, - 1):
+        graph[ax2][i + 1] = graph[ax2][i]
+
+    graph[ax2][1] = 0
+    graph[ax2][0] = 0
 
 def aggregate():
+    ans = 0
     for i in range(R):
         for j in range(C):
-            graph[i][j]
+            if graph[i][j] > 0:
+                ans += graph[i][j]
+    return ans
 
 for _ in range(T):
     graph = Spread()
     running()
 
-aggregate()
+print(aggregate())
