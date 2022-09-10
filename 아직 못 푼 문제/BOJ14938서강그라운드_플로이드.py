@@ -1,4 +1,3 @@
-import heapq
 import sys
 INF = int(1e9)
 n, m, r = map(int, input().split())
