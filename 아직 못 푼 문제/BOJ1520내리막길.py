@@ -12,6 +12,7 @@ for _ in range(N):
 
 cur_value = 0
 count = 0
+
 def bfs():
     global count
     que = deque()
@@ -26,4 +27,3 @@ def bfs():
                     if nx == N - 1 and ny == M - 1:
                         count += 1
                     que.append([nx, ny, road_map[nx][ny]])
-                    
