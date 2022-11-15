@@ -1,16 +1,26 @@
 N, M = map(int, input().split())
-
 numbers = [int(x) for x in input().split()]
 numbers.sort()
 
+box = []
+line = []
+visited = [False] * (N + 1)
 
-def dfs(depth, line):
+def dfs(depth):
     if depth == M:
-        print(" ".join(str, line))
+        tmp = ' '.join(map(str, line))
+        if tmp not in box:
+            box.append(tmp)
+        return
 
-    for i in range(N):
-        line.append(numbers[i])
-        dfs(depth + 1, )
+    for i in range(len(numbers)):
+        if visited[i] == False:
+            visited[i] = True
+            line.append(numbers[i])
+            dfs(depth + 1)
+            line.pop()
+            visited[i] = False
 
-arr = []
-dfs(0, arr)
+dfs(0)
+for i in box:
+    print(i)
